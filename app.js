@@ -1,4 +1,5 @@
 require('dotenv').config();
+const createError = require('http-errors');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -8,6 +9,17 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
+
+// Set up the database
+require('./configs/db.config');
+
+/Routers
+const indexRouter = require('./routes/index.routes');
+
+const app = express();
+
+// Express View Engine setup
+app.set('views', path.join)
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
